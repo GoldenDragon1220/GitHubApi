@@ -20,7 +20,7 @@ public class UserListViewModel extends ViewModel {
 
     private MutableLiveData<Resources<UserListDataModel>> mUserListLifeData
             = new MutableLiveData<>();
-    private static final int PER_PAGE = 30;
+    private static final int PER_PAGE = 20;
     private int currentPage = 0;
     private int lastId = 0;
     private GetUserListUseCase mUseCase;
