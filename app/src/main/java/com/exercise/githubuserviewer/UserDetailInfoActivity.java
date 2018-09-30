@@ -91,7 +91,7 @@ public class UserDetailInfoActivity extends AppCompatActivity {
         String name = intent.getStringExtra(KEY_LOGIN_NAME);
         Log.d(TAG, "Request name: " + name);
         if (!TextUtils.isEmpty(name)) {
-            viewModel.requsetUserDetailInfo(name);
+            viewModel.requestUserDetailInfo(name);
         }
     }
 

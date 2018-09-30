@@ -22,7 +22,7 @@ public class UserDetailInfoViewModel extends ViewModel {
         return mUserDetailInfoLiveData;
     }
 
-    public void requsetUserDetailInfo(String userName) {
+    public void requestUserDetailInfo(String userName) {
         if (mUseCase != null) {
             mUseCase.dispose();
         }
