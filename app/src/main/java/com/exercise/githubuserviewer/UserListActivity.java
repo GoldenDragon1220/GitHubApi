@@ -79,8 +79,8 @@ public class UserListActivity extends AppCompatActivity implements UserListAdapt
             public void onChanged(@Nullable Resources<UserListDataModel> resources) {
                 if (resources != null) {
                     if (resources.mStatus == Resources.SUCCESS) {
-                        mAdapter.setData(resources.mData.getUserList());
                         hasMoreData = resources.mData.hasMoreData();
+                        mAdapter.setData(resources.mData.getUserList(), hasMoreData);
                     }
                     updateCommonUI(resources, mAdapter.hasData());
                 }

@@ -33,18 +33,20 @@ public class UserListAdapter extends RecyclerView.Adapter {
     private List<GitHubUsersBean> mData;
     private Context mContext;
     private AdapterListener mListener;
+    private boolean mHasMoreData = true;
 
     public UserListAdapter(@NonNull Context context,@NonNull AdapterListener listener) {
         mContext = context;
         mListener = listener;
     }
 
-    public void setData(List<GitHubUsersBean> data) {
+    public void setData(List<GitHubUsersBean> data, boolean hasMoreData) {
         Log.d(TAG, "[setData] add " + data.size() + " data.");
         if (mData == null) {
             mData = new ArrayList<>();
         }
 
+        mHasMoreData = hasMoreData;
         mData.addAll(data);
         notifyItemInserted(mData.size() - 1);
     }
@@ -104,6 +106,12 @@ public class UserListAdapter extends RecyclerView.Adapter {
                 }
             });
 
+        } else if (isFooter(position)) {
+            if (!mHasMoreData) {
+                TextView footerTv = ((CommonRecyclerViewHolder)holder).getView(R.id.footer_text);
+                footerTv.setText("No more data");
+                ((CommonRecyclerViewHolder)holder).getView(R.id.footer_progress_bar).setVisibility(View.GONE);
+            }
         }
     }
 
